@@ -28,11 +28,11 @@ export default function SuccessFeeCalculator() {
   }, [amount]);
 
   return (
-    <div className="rounded-2xl border border-border bg-white p-6 sm:p-8">
-      <h3 className="text-base font-semibold text-navy sm:text-lg">
+    <div className="rounded-[20px] border border-white/20 p-6 text-white sm:p-8">
+      <h3 className="text-lg font-medium tracking-tight text-white sm:text-xl">
         Success fee calculator
       </h3>
-      <p className="mt-1 text-sm text-muted-foreground">
+      <p className="mt-1 text-sm text-white/60">
         Estimate your success fee. Due within 5 business days after funds are
         approved and available.
       </p>
@@ -45,8 +45,8 @@ export default function SuccessFeeCalculator() {
             onClick={() => setAmount(preset)}
             className={`rounded-full border px-3.5 py-1.5 text-xs font-medium transition ${
               amount === preset
-                ? "border-blue bg-blue text-white"
-                : "border-border bg-white text-navy hover:border-blue/40"
+                ? "border-cyan bg-cyan text-black"
+                : "border-white/25 text-white hover:border-white"
             }`}
           >
             {formatCurrency(preset)}
@@ -66,42 +66,42 @@ export default function SuccessFeeCalculator() {
           step={1000}
           value={amount}
           onChange={(event) => setAmount(Number(event.target.value))}
-          className="w-full accent-blue"
+          className="w-full accent-cyan"
         />
         <div className="mt-2 flex items-center justify-between text-sm">
-          <span className="text-muted-foreground">Funding amount</span>
-          <span className="font-semibold text-navy">
+          <span className="text-white/60">Funding amount</span>
+          <span className="font-medium text-white">
             {formatCurrency(amount)}
           </span>
         </div>
       </div>
 
-      <div className="mt-6 space-y-2 border-t border-border pt-5 text-sm">
+      <div className="mt-6 space-y-2 border-t border-white/15 pt-5 text-sm">
         <div className="flex items-center justify-between">
-          <span className="text-muted-foreground">
+          <span className="text-white/60">
             8% on first $20,000
           </span>
-          <span className="font-medium text-navy">
+          <span className="font-medium text-white">
             {formatCurrency(firstTier)}
           </span>
         </div>
         <div className="flex items-center justify-between">
-          <span className="text-muted-foreground">
+          <span className="text-white/60">
             10% on amount over $20,000
           </span>
-          <span className="font-medium text-navy">
+          <span className="font-medium text-white">
             {formatCurrency(secondTier)}
           </span>
         </div>
-        <div className="flex items-center justify-between border-t border-border pt-3">
-          <span className="font-semibold text-navy">Total success fee</span>
-          <span className="text-lg font-bold text-blue">
+        <div className="flex items-center justify-between border-t border-white/15 pt-3">
+          <span className="font-medium text-white">Total success fee</span>
+          <span className="text-xl font-medium text-cyan">
             {formatCurrency(total)}
           </span>
         </div>
       </div>
 
-      <p className="mt-4 text-xs text-muted-foreground">
+      <p className="mt-4 text-xs text-white/50">
         No funding, no success fee. Funding is not guaranteed; approvals,
         amounts and terms are set by lenders.
       </p>

@@ -51,17 +51,17 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={htmlFor} className="text-sm font-medium text-navy">
+      <label htmlFor={htmlFor} className="text-sm font-medium text-white">
         {label}
       </label>
       {children}
-      {error ? <p className="text-xs text-red-600">{error}</p> : null}
+      {error ? <p className="text-xs text-red-400">{error}</p> : null}
     </div>
   );
 }
 
 const inputClass =
-  "w-full rounded-lg border border-border bg-white px-3.5 py-2.5 text-sm text-navy placeholder:text-muted-foreground outline-none transition focus:border-blue focus:ring-2 focus:ring-blue/20";
+  "w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/35 outline-none transition focus:border-cyan [&>option]:text-black";
 
 export default function QualificationForm() {
   const [state, formAction, isPending] = useActionState(
@@ -71,7 +71,7 @@ export default function QualificationForm() {
 
   if (state.status === "success") {
     return (
-      <div className="rounded-2xl border border-cyan/30 bg-white p-8 text-center shadow-sm sm:p-10">
+      <div className="rounded-[20px] border border-cyan/40 p-8 text-center sm:p-10">
         <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-cyan/15 text-cyan">
           <svg
             width="24"
@@ -89,10 +89,10 @@ export default function QualificationForm() {
             />
           </svg>
         </div>
-        <h3 className="text-xl font-semibold text-navy">
+        <h3 className="text-xl font-medium text-white">
           You&apos;re on the list
         </h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+        <p className="mt-2 text-sm leading-relaxed text-white/65">
           {state.message}
         </p>
       </div>
@@ -105,10 +105,10 @@ export default function QualificationForm() {
     <form
       action={formAction}
       noValidate
-      className="rounded-2xl border border-border bg-white p-6 shadow-sm sm:p-8"
+      className="rounded-[20px] border border-white/15 p-6 sm:p-8"
     >
       {state.status === "error" && state.message ? (
-        <p className="mb-5 rounded-lg bg-red-50 px-3.5 py-2.5 text-sm text-red-700">
+        <p className="mb-5 rounded-lg bg-red-500/10 px-3.5 py-2.5 text-sm text-red-300">
           {state.message}
         </p>
       ) : null}
@@ -270,12 +270,12 @@ export default function QualificationForm() {
       <button
         type="submit"
         disabled={isPending}
-        className="mt-6 w-full rounded-full bg-blue px-6 py-3.5 text-center text-sm font-semibold text-white shadow-[0_8px_24px_-8px_oklch(42.6%_0.212_262.87/0.55)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        className="mt-6 w-full rounded-full bg-cyan px-7 py-4 text-center text-sm font-medium text-black transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
       >
         {isPending ? "Submitting…" : "Check My Business Funding Readiness"}
       </button>
 
-      <p className="mt-3 text-xs text-muted-foreground">
+      <p className="mt-3 text-xs text-white/50">
         By submitting, you agree to be contacted by CREDA BUDDi about your
         business funding readiness. No obligation. Results vary.
       </p>

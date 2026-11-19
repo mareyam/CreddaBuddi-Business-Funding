@@ -41,7 +41,7 @@ export default function FAQAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="divide-y divide-border rounded-2xl border border-border bg-white">
+    <div className="divide-y divide-white/15 border-y border-white/15">
       {faqs.map((item, index) => {
         const isOpen = openIndex === index;
         return (
@@ -50,13 +50,13 @@ export default function FAQAccordion() {
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : index)}
               aria-expanded={isOpen}
-              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
+              className="flex w-full items-center justify-between gap-4 py-6 text-left"
             >
-              <span className="text-sm font-semibold text-navy sm:text-base">
+              <span className="text-xl font-medium tracking-[-0.025em] text-white sm:text-2xl">
                 {item.q}
               </span>
               <span
-                className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-muted text-navy transition-transform duration-200 ${
+                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/40 text-white transition-transform duration-200 ${
                   isOpen ? "rotate-45" : ""
                 }`}
                 aria-hidden="true"
@@ -72,7 +72,7 @@ export default function FAQAccordion() {
               </span>
             </button>
             {isOpen ? (
-              <div className="px-5 pb-5 text-sm leading-relaxed text-muted-foreground sm:px-6">
+              <div className="max-w-2xl pb-6 text-base leading-relaxed text-white/65">
                 {item.a}
               </div>
             ) : null}
