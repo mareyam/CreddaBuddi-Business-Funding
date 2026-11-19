@@ -8,6 +8,14 @@
   --blue: oklch(42.6115% .212 262.87);
   --cyan: oklch(67.8264% .1174 210.13);
   --gold: oklch(83% .15 85);
+
+  /* Hero-only premium fintech palette (see CREDA BUDDi hero redesign). */
+  --midnight-navy: #101c2c;
+  --champagne-gold: #c5a46d;
+  --warm-ivory: #f6f3ed;
+  --slate-blue: #26384c;
+  --soft-silver: #a9b2be;
+
   --blue-foreground: oklch(99% 0 0);
   --ice-foreground: oklch(11.0793% .0311 257.22);
 
@@ -28,6 +36,13 @@
   --color-blue: var(--blue);
   --color-cyan: var(--cyan);
   --color-gold: var(--gold);
+  --color-midnight-navy: var(--midnight-navy);
+  --color-champagne-gold: var(--champagne-gold);
+  --color-warm-ivory: var(--warm-ivory);
+  --color-slate-blue: var(--slate-blue);
+  --color-soft-silver: var(--soft-silver);
+  --font-playfair: var(--font-playfair-display);
+  --font-dm-sans: var(--font-dm-sans);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

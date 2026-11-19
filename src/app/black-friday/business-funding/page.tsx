@@ -194,34 +194,89 @@ export default function BusinessFundingLandingPage() {
       </header>
 
       <main>
-        {/* ---------- Hero ---------- */}
-        <section className="relative overflow-hidden bg-navy text-white">
+        {/* ---------- Hero (premium fintech redesign) ---------- */}
+        <section
+          className="relative overflow-hidden"
+          style={{ backgroundColor: "var(--midnight-navy)", color: "var(--warm-ivory)" }}
+        >
+          {/* subtle lighting + texture, no bright gradients */}
           <div
-            className="pointer-events-none absolute inset-0 opacity-70"
+            className="pointer-events-none absolute inset-0"
             style={{
               background:
-                "radial-gradient(60% 50% at 85% 10%, oklch(42.6% 0.212 262.87 / 0.55), transparent), radial-gradient(45% 40% at 10% 90%, oklch(67.8% 0.1174 210.13 / 0.35), transparent)",
+                "radial-gradient(50% 60% at 82% 0%, oklch(100% 0 0 / 0.06), transparent 70%)",
             }}
             aria-hidden="true"
           />
-          <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-28">
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.07]"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, var(--champagne-gold) 1px, transparent 1px), linear-gradient(to bottom, var(--champagne-gold) 1px, transparent 1px)",
+              backgroundSize: "64px 64px",
+            }}
+            aria-hidden="true"
+          />
+          {/* thin gold decorative line */}
+          <div
+            className="pointer-events-none absolute top-0 left-0 h-full w-px opacity-40"
+            style={{ background: "linear-gradient(to bottom, transparent, var(--champagne-gold), transparent)" }}
+            aria-hidden="true"
+          />
+
+          <div className="relative mx-auto grid max-w-6xl gap-14 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-32">
+            {/* ---- Left column ---- */}
             <div className="animate-fade-up">
-              <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-gold uppercase">
+              <span
+                className="inline-flex items-center gap-2.5 text-xs font-semibold tracking-[0.2em] uppercase"
+                style={{ color: "var(--champagne-gold)", fontFamily: "var(--font-dm-sans)" }}
+              >
+                <span
+                  className="h-px w-8"
+                  style={{ backgroundColor: "var(--champagne-gold)" }}
+                  aria-hidden="true"
+                />
                 Business Funding Growth Accelerator
               </span>
-              <h1 className="mt-5 text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl lg:text-[2.75rem]">
-                Your Business Is Ready for Its Next Move.
-                <br className="hidden sm:block" /> Is Your Funding Strategy?
+
+              <h1
+                className="mt-7 text-4xl leading-[1.12] font-semibold tracking-tight sm:text-5xl lg:text-[3.25rem]"
+                style={{ fontFamily: "var(--font-playfair)", color: "var(--warm-ivory)" }}
+              >
+                Your Business Is Ready for Its Next Move.{" "}
+                <span style={{ color: "var(--champagne-gold)" }}>
+                  Is Your Funding Strategy?
+                </span>
               </h1>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
+
+              <p
+                className="mt-6 max-w-lg text-base leading-relaxed sm:text-lg"
+                style={{ color: "var(--soft-silver)", fontFamily: "var(--font-dm-sans)" }}
+              >
                 Stop guessing which lenders to approach. Get a clearer plan
                 for pursuing the capital your business needs to grow.
               </p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-4">
+              <div
+                className="mt-6 text-sm"
+                style={{ color: "var(--soft-silver)", fontFamily: "var(--font-dm-sans)" }}
+              >
+                Starting at{" "}
+                <span className="font-semibold" style={{ color: "var(--warm-ivory)" }}>
+                  $2,497
+                </span>
+              </div>
+
+              <div className="mt-9 flex flex-wrap items-center gap-5">
                 <a
                   href={`#${faqAnchorId}`}
-                  className="inline-flex items-center gap-2 rounded-full bg-cyan px-7 py-3.5 text-sm font-semibold text-navy shadow-[0_10px_30px_-10px_oklch(67.8%_0.1174_210.13/0.7)] transition hover:brightness-105"
+                  className="inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold transition hover:brightness-110"
+                  style={{
+                    backgroundColor: "var(--champagne-gold)",
+                    color: "var(--midnight-navy)",
+                    fontFamily: "var(--font-dm-sans)",
+                    boxShadow: "0 12px 32px -12px rgba(197, 164, 109, 0.55)",
+                  }}
                 >
                   Check My Business Funding Readiness
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -234,64 +289,139 @@ export default function BusinessFundingLandingPage() {
                     />
                   </svg>
                 </a>
-                <span className="text-sm text-white/60">
-                  Starting at <span className="font-semibold text-white">$2,497</span>
-                </span>
               </div>
 
-              <p className="mt-6 text-xs text-white/45">
+              <p
+                className="mt-5 max-w-sm text-sm leading-relaxed"
+                style={{ color: "var(--soft-silver)", fontFamily: "var(--font-dm-sans)" }}
+              >
+                A personalized approach to understanding your business
+                funding options.
+              </p>
+
+              <p
+                className="mt-8 border-t pt-5 text-xs leading-relaxed"
+                style={{
+                  borderColor: "rgba(169, 178, 190, 0.2)",
+                  color: "rgba(169, 178, 190, 0.7)",
+                  fontFamily: "var(--font-dm-sans)",
+                }}
+              >
                 Success fee of 8% on the first $20,000 funded and 10% above
                 that, only if you&apos;re funded. Results vary. No
                 guarantees.
               </p>
             </div>
 
-            <div className="relative mx-auto w-full max-w-sm animate-fade-up [animation-delay:150ms] lg:max-w-none">
-              <div className="relative rounded-3xl border border-white/10 bg-white/5 p-5 shadow-2xl backdrop-blur-sm sm:p-6">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-medium uppercase tracking-wide text-white/50">
-                    Funding Readiness
-                  </span>
-                  <span className="rounded-full bg-cyan/15 px-2.5 py-1 text-[11px] font-semibold text-cyan">
-                    In progress
-                  </span>
-                </div>
+            {/* ---- Right column: bespoke funding-strategy visual ---- */}
+            <div className="relative mx-auto w-full max-w-md animate-fade-up [animation-delay:150ms] lg:max-w-none">
+              <svg
+                viewBox="0 0 440 460"
+                className="h-auto w-full"
+                role="img"
+                aria-label="Abstract illustration of a layered funding strategy document with connected growth path"
+              >
+                <defs>
+                  <linearGradient id="goldLine" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="var(--champagne-gold)" stopOpacity="0.9" />
+                    <stop offset="100%" stopColor="var(--champagne-gold)" stopOpacity="0.15" />
+                  </linearGradient>
+                  <linearGradient id="cardFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="var(--slate-blue)" />
+                    <stop offset="100%" stopColor="var(--midnight-navy)" />
+                  </linearGradient>
+                </defs>
 
-                <div className="mt-5 space-y-3">
-                  {[
-                    { label: "Business foundation", pct: 82 },
-                    { label: "Credit profile", pct: 64 },
-                    { label: "Lender fit", pct: 47 },
-                  ].map((row) => (
-                    <div key={row.label}>
-                      <div className="flex items-center justify-between text-xs text-white/70">
-                        <span>{row.label}</span>
-                        <span>{row.pct}%</span>
-                      </div>
-                      <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
-                        <div
-                          className="h-full rounded-full bg-gradient-to-r from-blue to-cyan"
-                          style={{ width: `${row.pct}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                {/* back card: strategy document */}
+                <rect
+                  x="54"
+                  y="36"
+                  width="300"
+                  height="360"
+                  rx="18"
+                  fill="url(#cardFill)"
+                  stroke="rgba(197,164,109,0.35)"
+                  strokeWidth="1"
+                />
+                <rect x="86" y="76" width="140" height="10" rx="3" fill="var(--warm-ivory)" opacity="0.9" />
+                <rect x="86" y="98" width="96" height="7" rx="3" fill="var(--soft-silver)" opacity="0.5" />
 
-                <div className="mt-6 flex items-center gap-3 rounded-2xl bg-white/5 p-3.5">
-                  <Image
-                    src={MASCOT_SRC}
-                    alt=""
-                    width={44}
-                    height={44}
-                    className="h-11 w-11 shrink-0 rounded-xl object-cover"
-                  />
-                  <p className="text-xs leading-relaxed text-white/70">
-                    A personalized funding strategy, built around where your
-                    business stands today.
-                  </p>
-                </div>
-              </div>
+                {/* three strategy "line items" */}
+                {[0, 1, 2].map((i) => (
+                  <g key={i} transform={`translate(86, ${142 + i * 56})`}>
+                    <circle cx="8" cy="8" r="8" fill="none" stroke="var(--champagne-gold)" strokeWidth="1.4" />
+                    <circle cx="8" cy="8" r="2.4" fill="var(--champagne-gold)" />
+                    <rect x="28" y="2" width={118 - i * 14} height="6" rx="3" fill="var(--warm-ivory)" opacity="0.85" />
+                    <rect x="28" y="16" width={150 - i * 10} height="5" rx="2.5" fill="var(--soft-silver)" opacity="0.4" />
+                  </g>
+                ))}
+
+                {/* thin connecting growth path */}
+                <path
+                  d="M86 338 C 150 338, 150 300, 210 300 S 280 250, 320 250"
+                  fill="none"
+                  stroke="url(#goldLine)"
+                  strokeWidth="1.6"
+                />
+                <circle cx="320" cy="250" r="4" fill="var(--champagne-gold)" />
+
+                {/* floating secondary card: refined accent */}
+                <rect
+                  x="232"
+                  y="236"
+                  width="150"
+                  height="150"
+                  rx="16"
+                  fill="var(--midnight-navy)"
+                  stroke="var(--champagne-gold)"
+                  strokeOpacity="0.5"
+                  strokeWidth="1"
+                />
+                <text
+                  x="256"
+                  y="276"
+                  fontFamily="var(--font-dm-sans)"
+                  fontSize="10"
+                  letterSpacing="2"
+                  fill="var(--soft-silver)"
+                >
+                  STRATEGY
+                </text>
+                <text
+                  x="256"
+                  y="306"
+                  fontFamily="var(--font-playfair)"
+                  fontSize="24"
+                  fill="var(--champagne-gold)"
+                >
+                  02 / 04
+                </text>
+                <line x1="256" y1="322" x2="358" y2="322" stroke="rgba(197,164,109,0.3)" strokeWidth="1" />
+                <text
+                  x="256"
+                  y="346"
+                  fontFamily="var(--font-dm-sans)"
+                  fontSize="11"
+                  fill="var(--warm-ivory)"
+                  opacity="0.75"
+                >
+                  Lender Matching
+                </text>
+                <text
+                  x="256"
+                  y="364"
+                  fontFamily="var(--font-dm-sans)"
+                  fontSize="11"
+                  fill="var(--warm-ivory)"
+                  opacity="0.75"
+                >
+                  Application Guidance
+                </text>
+
+                {/* thin gold corner accents */}
+                <path d="M54 36 L54 20 L70 20" fill="none" stroke="var(--champagne-gold)" strokeWidth="1.2" opacity="0.6" />
+                <path d="M354 396 L354 412 L338 412" fill="none" stroke="var(--champagne-gold)" strokeWidth="1.2" opacity="0.6" />
+              </svg>
             </div>
           </div>
         </section>
