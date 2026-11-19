@@ -313,115 +313,110 @@ export default function BusinessFundingLandingPage() {
               </p>
             </div>
 
-            {/* ---- Right column: bespoke funding-strategy visual ---- */}
-            <div className="relative mx-auto w-full max-w-md animate-fade-up [animation-delay:150ms] lg:max-w-none">
-              <svg
-                viewBox="0 0 440 460"
-                className="h-auto w-full"
-                role="img"
-                aria-label="Abstract illustration of a layered funding strategy document with connected growth path"
-              >
-                <defs>
-                  <linearGradient id="goldLine" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="var(--champagne-gold)" stopOpacity="0.9" />
-                    <stop offset="100%" stopColor="var(--champagne-gold)" stopOpacity="0.15" />
-                  </linearGradient>
-                  <linearGradient id="cardFill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="var(--slate-blue)" />
-                    <stop offset="100%" stopColor="var(--midnight-navy)" />
-                  </linearGradient>
-                </defs>
-
-                {/* back card: strategy document */}
-                <rect
-                  x="54"
-                  y="36"
-                  width="300"
-                  height="360"
-                  rx="18"
-                  fill="url(#cardFill)"
-                  stroke="rgba(197,164,109,0.35)"
-                  strokeWidth="1"
-                />
-                <rect x="86" y="76" width="140" height="10" rx="3" fill="var(--warm-ivory)" opacity="0.9" />
-                <rect x="86" y="98" width="96" height="7" rx="3" fill="var(--soft-silver)" opacity="0.5" />
-
-                {/* three strategy "line items" */}
-                {[0, 1, 2].map((i) => (
-                  <g key={i} transform={`translate(86, ${142 + i * 56})`}>
-                    <circle cx="8" cy="8" r="8" fill="none" stroke="var(--champagne-gold)" strokeWidth="1.4" />
-                    <circle cx="8" cy="8" r="2.4" fill="var(--champagne-gold)" />
-                    <rect x="28" y="2" width={118 - i * 14} height="6" rx="3" fill="var(--warm-ivory)" opacity="0.85" />
-                    <rect x="28" y="16" width={150 - i * 10} height="5" rx="2.5" fill="var(--soft-silver)" opacity="0.4" />
-                  </g>
-                ))}
-
-                {/* thin connecting growth path */}
-                <path
-                  d="M86 338 C 150 338, 150 300, 210 300 S 280 250, 320 250"
-                  fill="none"
-                  stroke="url(#goldLine)"
-                  strokeWidth="1.6"
-                />
-                <circle cx="320" cy="250" r="4" fill="var(--champagne-gold)" />
-
-                {/* floating secondary card: refined accent */}
-                <rect
-                  x="232"
-                  y="236"
-                  width="150"
-                  height="150"
-                  rx="16"
-                  fill="var(--midnight-navy)"
-                  stroke="var(--champagne-gold)"
-                  strokeOpacity="0.5"
-                  strokeWidth="1"
-                />
-                <text
-                  x="256"
-                  y="276"
-                  fontFamily="var(--font-dm-sans)"
-                  fontSize="10"
-                  letterSpacing="2"
-                  fill="var(--soft-silver)"
+            {/* ---- Right column: fanned funding-program card stack ---- */}
+            <div className="relative mx-auto h-[360px] w-full max-w-md animate-fade-up [animation-delay:150ms] sm:h-[420px] lg:h-[460px] lg:max-w-none">
+              {[
+                {
+                  label: "CREDA Core",
+                  sub: "Credit foundation",
+                  rotate: -10,
+                  x: "-6%",
+                  y: "10%",
+                  z: 10,
+                  from: "var(--slate-blue)",
+                  to: "var(--midnight-navy)",
+                  textTone: "var(--soft-silver)",
+                },
+                {
+                  label: "CREDA Pro",
+                  sub: "Funding readiness",
+                  rotate: -2,
+                  x: "14%",
+                  y: "2%",
+                  z: 20,
+                  from: "#3a2f1a",
+                  to: "var(--midnight-navy)",
+                  textTone: "var(--warm-ivory)",
+                },
+                {
+                  label: "Business Funding",
+                  sub: "Growth Accelerator",
+                  rotate: 7,
+                  x: "32%",
+                  y: "-6%",
+                  z: 30,
+                  from: "var(--champagne-gold)",
+                  to: "#8a6f41",
+                  textTone: "var(--midnight-navy)",
+                },
+              ].map((card) => (
+                <div
+                  key={card.label}
+                  className="absolute top-1/2 left-1/2 h-[220px] w-[320px] rounded-[20px] p-6 shadow-2xl sm:h-[250px] sm:w-[370px]"
+                  style={{
+                    transform: `translate(-50%, -50%) translate(${card.x}, ${card.y}) rotate(${card.rotate}deg)`,
+                    zIndex: card.z,
+                    background: `linear-gradient(135deg, ${card.from}, ${card.to})`,
+                    border: "1px solid rgba(197,164,109,0.35)",
+                    fontFamily: "var(--font-dm-sans)",
+                  }}
                 >
-                  STRATEGY
-                </text>
-                <text
-                  x="256"
-                  y="306"
-                  fontFamily="var(--font-playfair)"
-                  fontSize="24"
-                  fill="var(--champagne-gold)"
-                >
-                  02 / 04
-                </text>
-                <line x1="256" y1="322" x2="358" y2="322" stroke="rgba(197,164,109,0.3)" strokeWidth="1" />
-                <text
-                  x="256"
-                  y="346"
-                  fontFamily="var(--font-dm-sans)"
-                  fontSize="11"
-                  fill="var(--warm-ivory)"
-                  opacity="0.75"
-                >
-                  Lender Matching
-                </text>
-                <text
-                  x="256"
-                  y="364"
-                  fontFamily="var(--font-dm-sans)"
-                  fontSize="11"
-                  fill="var(--warm-ivory)"
-                  opacity="0.75"
-                >
-                  Application Guidance
-                </text>
+                  <div className="flex items-start justify-between">
+                    <span
+                      className="text-xs font-semibold tracking-[0.18em] uppercase"
+                      style={{ color: card.textTone, opacity: 0.85 }}
+                    >
+                      CREDA BUDDi
+                    </span>
+                    {/* contactless icon */}
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path
+                        d="M6 10a8.5 8.5 0 0 1 0 4M10.5 7a13 13 0 0 1 0 10M15 4a17.5 17.5 0 0 1 0 16"
+                        stroke={card.textTone}
+                        strokeOpacity="0.6"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </div>
 
-                {/* thin gold corner accents */}
-                <path d="M54 36 L54 20 L70 20" fill="none" stroke="var(--champagne-gold)" strokeWidth="1.2" opacity="0.6" />
-                <path d="M354 396 L354 412 L338 412" fill="none" stroke="var(--champagne-gold)" strokeWidth="1.2" opacity="0.6" />
-              </svg>
+                  {/* chip */}
+                  <div
+                    className="mt-7 h-7 w-9 rounded-md"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, var(--champagne-gold), #8a6f41)",
+                    }}
+                  />
+
+                  <p
+                    className="mt-6 text-base tracking-[0.12em]"
+                    style={{ color: card.textTone, opacity: 0.9 }}
+                  >
+                    •••• •••• •••• 2497
+                  </p>
+
+                  <div className="mt-4 flex items-end justify-between">
+                    <div>
+                      <p
+                        className="font-semibold"
+                        style={{
+                          color: card.textTone,
+                          fontFamily: "var(--font-playfair)",
+                        }}
+                      >
+                        {card.label}
+                      </p>
+                      <p
+                        className="mt-0.5 text-[11px] tracking-wide uppercase opacity-70"
+                        style={{ color: card.textTone }}
+                      >
+                        {card.sub}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
