@@ -6,7 +6,7 @@ import type p5 from "p5";
 
 const LOGO_SRC =
   "https://assets.cdn.filesafe.space/WngHsAfzZPxeecb7veIn/media/6ad8322cf9a985d42c4e4d7b.webp";
-const PERSONAL_HREF = "https://credabuddi.com/";
+const PERSONAL_HREF = "#qualification-form";
 const BUSINESS_HREF = "#qualification-form";
 
 const TAU = Math.PI * 2;
@@ -374,7 +374,7 @@ export default function AuraHero() {
             <Image src={LOGO_SRC} alt="CREDA BUDDi" width={160} height={50} priority />
           </a>
           <a className="ah-navpill" href={BUSINESS_HREF}>
-            Check My Readiness
+            Check My Funding Readiness
           </a>
           <a className="ah-ibtn" href={BUSINESS_HREF} aria-label="Start my funding review">
             <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -387,7 +387,7 @@ export default function AuraHero() {
           <a
             className="ah-ibtn ah-ibtn-accent"
             href={PERSONAL_HREF}
-            aria-label="Visit credabuddi.com"
+            aria-label="Check my funding readiness"
           >
             <ArrowUpRight />
           </a>
@@ -408,9 +408,10 @@ export default function AuraHero() {
           </h1>
           <p className="ah-lede">
             Denied, stuck, or tired of guessing? CREDA BUDDi gives you a clear
-            plan to protect your credit, strengthen your profile and get ready
+            plan to understand your credit, work on your profile and prepare
             for personal and business funding.
           </p>
+          <p className="ah-best">Best for registered businesses with revenue.</p>
           <div className="ah-paths">
             <a className="ah-pill ah-personal" data-path="personal" href={PERSONAL_HREF}>
               Personal Credit &amp; Funding
@@ -430,7 +431,6 @@ export default function AuraHero() {
         <div className="ah-bottom">
           <ul className="ah-trust">
             <li>Credit Education</li>
-            <li>Dispute Support</li>
             <li>Funding Readiness</li>
             <li>Real Team Support</li>
           </ul>

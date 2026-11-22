@@ -3,7 +3,9 @@ import Image from "next/image";
 import AuraHero from "./AuraHero";
 import QualificationForm from "./QualificationForm";
 import FAQAccordion from "./FAQAccordion";
-import SuccessFeeCalculator from "./SuccessFeeCalculator";
+import FunnelShell from "./FunnelShell";
+import ViewLink from "./ViewLink";
+import { Pill, formAnchorId, frame, h2, inner, label } from "./shared";
 
 export const metadata: Metadata = {
   title: "Business Funding Growth Accelerator | CREDA BUDDi",
@@ -16,13 +18,6 @@ const LOGO_SRC =
 const MASCOT_SRC =
   "https://assets.cdn.filesafe.space/WngHsAfzZPxeecb7veIn/media/6ad82defcd7225ed37242428.png";
 
-// Set to false to hide the Black Friday bonus section. Only keep this
-// enabled while the bonus (strategy consultation + written roadmap) is
-// genuinely additional to the standard program and can be fulfilled.
-const BLACK_FRIDAY_BONUS_ENABLED = true;
-
-const formAnchorId = "qualification-form";
-
 const included = [
   {
     title: "Funding Readiness Assessment",
@@ -30,7 +25,7 @@ const included = [
   },
   {
     title: "Lender Matching",
-    body: "Explore potential lenders and funding options that may align with your business profile and goals.",
+    body: "Understand potential lender requirements and explore funding options that may align with your business profile before applying.",
   },
   {
     title: "Application Guidance",
@@ -76,67 +71,6 @@ const problems = [
   "Approaching lenders that were never a good fit to begin with",
   "Making funding decisions without a clear, strategic plan",
 ];
-
-const deliverables = [
-  "Funding strategy call",
-  "Personal and business credit analysis",
-  "Business foundation review",
-  "D-U-N-S® and business credit file setup",
-  "Net-30 vendor tradeline roadmap",
-  "Lender-ready document package",
-  "Strategic application sequencing",
-  "Guidance through your funding rounds",
-];
-
-/* ---------- shared Aura-style building blocks ---------- */
-
-const frame =
-  "mx-2.5 my-2.5 overflow-hidden rounded-[18px] sm:mx-4 sm:my-4 sm:rounded-[22px]";
-const inner = "mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24";
-const label =
-  "font-[family-name:var(--font-geist-mono)] text-xs uppercase tracking-[0.2em]";
-const h2 =
-  "text-[clamp(2.2rem,5.6vw,4.8rem)] font-medium leading-[0.96] tracking-[-0.055em] text-balance";
-
-function Arrow() {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" className="h-[18px] w-[18px]">
-      <path
-        d="M4.5 11.5l7-7M5.5 4.5h6v6"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function Pill({
-  href,
-  tone,
-  children,
-}: {
-  href: string;
-  tone: "cyan" | "black";
-  children: React.ReactNode;
-}) {
-  const body = tone === "cyan" ? "bg-cyan text-black" : "bg-black text-white";
-  const dot = tone === "cyan" ? "bg-black text-cyan" : "bg-cyan text-black";
-  return (
-    <a
-      href={href}
-      className={`group inline-flex items-center gap-4 rounded-full py-1.5 pr-1.5 pl-6 text-base font-medium tracking-tight transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-white max-sm:w-full max-sm:justify-between ${body}`}
-    >
-      {children}
-      <span
-        className={`grid h-11 w-11 shrink-0 place-items-center rounded-full transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${dot}`}
-      >
-        <Arrow />
-      </span>
-    </a>
-  );
-}
 
 /** Radial burst of strokes, the same visual language as the hero field. */
 function StrokeIcon({ index }: { index: number }) {
@@ -202,6 +136,7 @@ function StrokeFan() {
 
 export default function BusinessFundingLandingPage() {
   return (
+    <FunnelShell>
     <div className="bg-[#0b0d12] font-[family-name:var(--font-geist)] text-white">
       <main>
         <AuraHero />
@@ -212,7 +147,7 @@ export default function BusinessFundingLandingPage() {
             <div>
               <p className={`${label} text-cyan`}>The challenge</p>
               <h2 className={`${h2} mt-5`}>
-                Most business owners apply too early, with the wrong strategy.
+                Many business owners apply too early, with the wrong strategy.
               </h2>
             </div>
             <ul className="self-end">
@@ -311,7 +246,7 @@ export default function BusinessFundingLandingPage() {
             </div>
             <div>
               <Pill href={`#${formAnchorId}`} tone="cyan">
-                Check My Business Funding Readiness
+                Check My Funding Readiness
               </Pill>
             </div>
           </div>
@@ -381,96 +316,6 @@ export default function BusinessFundingLandingPage() {
           </div>
         </section>
 
-        {/* ---------- Pricing ---------- */}
-        <section className={`${frame} bg-black text-white`}>
-          <div className={inner}>
-            <p className={`${label} text-cyan`}>Program pricing</p>
-            <h2 className={`${h2} mt-5 max-w-3xl`}>
-              Transparent pricing. No hidden fees.
-            </h2>
-
-            <div className="mt-14 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-              <div>
-                <p className={`${label} text-white/50`}>Business Funding Program</p>
-                <div className="mt-3 flex flex-wrap items-baseline gap-x-5">
-                  <span className="text-[clamp(4.5rem,11vw,8.5rem)] leading-none font-medium tracking-[-0.06em]">
-                    $2,497
-                  </span>
-                  <span className="text-lg text-white/60">one-time fee</span>
-                </div>
-                <p className="mt-3 max-w-md text-base text-white/60">
-                  Charged when you sign. Cancel within 3 business days for a
-                  full refund.
-                </p>
-
-                <ul className="mt-10 grid sm:grid-cols-2 sm:gap-x-8">
-                  {deliverables.map((line) => (
-                    <li
-                      key={line}
-                      className="border-t border-white/15 py-3.5 text-[15px] tracking-tight text-white/90"
-                    >
-                      {line}
-                    </li>
-                  ))}
-                </ul>
-
-                <p className="mt-8 max-w-xl border-t border-white/15 pt-5 text-sm leading-relaxed text-white/55">
-                  Success fee only when you&apos;re funded: 8% on the first
-                  $20,000 and 10% above that, due within 5 business days after
-                  funds are approved and available. Credit Hero Score
-                  monitoring is required: $29.95/month, paid directly to Credit
-                  Hero Score, not to CREDA BUDDi. Results vary. No guarantees.
-                </p>
-
-                <div className="mt-8">
-                  <Pill href={`#${formAnchorId}`} tone="cyan">
-                    Check My Business Funding Readiness
-                  </Pill>
-                </div>
-              </div>
-
-              <SuccessFeeCalculator />
-            </div>
-          </div>
-        </section>
-
-        {/* ---------- Black Friday Bonus ---------- */}
-        {BLACK_FRIDAY_BONUS_ENABLED ? (
-          <section className={`${frame} bg-cyan text-black`}>
-            <div className={inner}>
-              <p className={`${label} text-black/70`}>Black Friday bonus</p>
-              <h2 className={`${h2} mt-5 max-w-4xl`}>
-                Enroll in the Business Funding Growth Accelerator and receive,
-                at no added cost:
-              </h2>
-              <div className="mt-12 grid sm:grid-cols-2 sm:gap-x-10">
-                <div className="border-t border-black/25 py-6">
-                  <h3 className="text-2xl font-medium tracking-[-0.03em]">
-                    Dedicated funding strategy consultation
-                  </h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-black/70">
-                    A focused session to walk through your readiness and
-                    options in more depth.
-                  </p>
-                </div>
-                <div className="border-t border-black/25 py-6">
-                  <h3 className="text-2xl font-medium tracking-[-0.03em]">
-                    Personalized written funding roadmap
-                  </h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-black/70">
-                    A written document outlining your funding strategy, yours
-                    to keep.
-                  </p>
-                </div>
-              </div>
-              <p className="mt-4 border-t border-black/25 pt-5 text-xs text-black/65">
-                Bonus available for enrollments completed during the Black
-                Friday period. Standard program fees and terms still apply.
-              </p>
-            </div>
-          </section>
-        ) : null}
-
         {/* ---------- Qualification Form ---------- */}
         <section id={formAnchorId} className={`${frame} bg-black text-white`}>
           <div className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
@@ -479,6 +324,9 @@ export default function BusinessFundingLandingPage() {
             <p className="mt-5 max-w-xl text-lg leading-snug tracking-tight text-white/60">
               Tell us a bit about your business. A member of the CREDA BUDDi
               team will follow up to discuss your funding strategy.
+            </p>
+            <p className="mt-3 max-w-xl text-sm text-white/50">
+              Program and success-fee pricing is explained before you enroll.
             </p>
             <div className="mt-10">
               <QualificationForm />
@@ -509,7 +357,7 @@ export default function BusinessFundingLandingPage() {
             </p>
             <div className="mt-9">
               <Pill href={`#${formAnchorId}`} tone="black">
-                Check My Business Funding Readiness
+                Check My Funding Readiness
               </Pill>
             </div>
           </div>
@@ -534,7 +382,11 @@ export default function BusinessFundingLandingPage() {
             </div>
             <div className="text-sm text-white/60">
               <p className={`${label} text-white`}>Contact</p>
-              <p className="mt-3">info@credabuddi.com</p>
+              <p className="mt-3">
+                <a href="mailto:info@credabuddi.com" className="hover:text-white">
+                  info@credabuddi.com
+                </a>
+              </p>
               <p>credabuddi.com</p>
               <p>Monday to Friday, 9:00 AM to 5:00 PM Central</p>
             </div>
@@ -542,23 +394,25 @@ export default function BusinessFundingLandingPage() {
 
           <div className="mt-10 space-y-2 border-t border-white/15 pt-6 text-xs leading-relaxed text-white/50">
             <p>
+              &copy; CREDA BUDDI LLC.{" "}
+              <ViewLink to="privacy" className="underline underline-offset-2 hover:text-white">Privacy Policy</ViewLink>
+              {" | "}
+              <ViewLink to="terms" className="underline underline-offset-2 hover:text-white">Terms</ViewLink>
+            </p>
+            <p>
               Results vary. No guarantees. Funding is not guaranteed;
               approvals, amounts and terms are set by lenders.
             </p>
+            <p>CREDA BUDDi is not a lender and does not make credit decisions.</p>
+            <p>Not legal, tax or financial advice.</p>
             <p>
-              Business Funding Program: $2,497 one-time fee, charged when you
-              sign. Cancel within 3 business days for a full refund. Success
-              fee, only when you&apos;re funded: 8% on the first $20,000 and
-              10% on amounts above that, due within 5 business days after
-              funds are approved and available.
-            </p>
-            <p>
-              Credit Hero Score monitoring is required: $29.95/month, paid
-              directly to Credit Hero Score, not to CREDA BUDDi.
+              D-U-N-S is a registered trademark of Dun &amp; Bradstreet. CREDA
+              BUDDi is not affiliated with Dun &amp; Bradstreet.
             </p>
           </div>
         </div>
       </footer>
     </div>
+    </FunnelShell>
   );
 }

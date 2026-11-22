@@ -12,20 +12,12 @@ const faqs: { q: string; a: string }[] = [
     a: "Business owners who are preparing to pursue funding and want a clearer, more strategic approach — including understanding their current readiness, identifying suitable lenders, and preparing a stronger application.",
   },
   {
-    q: "What does the $2,497 fee include?",
-    a: "The one-time fee covers your funding strategy call, personal and business credit analysis, business foundation review, lender-ready document package, and strategic application sequencing. It's charged when you sign, and it's refundable in full if you cancel within 3 business days.",
-  },
-  {
-    q: "Are there additional fees?",
-    a: "Yes. If you're funded, a success fee applies: 8% on the first $20,000 and 10% on amounts above that, due within 5 business days after funds are approved and available. No funding, no success fee. Credit Hero Score monitoring is required separately at $29.95/month, paid directly to Credit Hero Score, not to CREDA BUDDi.",
-  },
-  {
     q: "Is funding guaranteed?",
     a: "No. Funding is never guaranteed. Lender approvals, amounts and terms are set entirely by the lenders. CREDA BUDDi provides strategy, preparation and guidance — results vary and there are no guarantees.",
   },
   {
     q: "How does lender matching work?",
-    a: "Based on your business profile, credit standing and funding goals, we identify lenders and funding options that may be a reasonable fit, so you're not applying blind or burning your credit on mismatched applications.",
+    a: "When your readiness supports it, we use your business profile, credit standing and funding goals to help you explore lenders and funding options that may be a reasonable fit. Lenders make every approval decision, and funding is never guaranteed.",
   },
   {
     q: "What happens after I submit the qualification form?",
@@ -34,6 +26,21 @@ const faqs: { q: string; a: string }[] = [
   {
     q: "Do I need established business credit?",
     a: "No. Part of the program includes reviewing your business credit foundation — if it needs to be built or strengthened first, that's addressed as part of your strategy.",
+  },
+];
+
+/*
+ * Fee questions, removed from the main page FAQ. Kept for reuse on the
+ * Funding Ready Next Step page. The refund sentence is pending attorney approval.
+ */
+export const pricingFaqs: { q: string; a: string }[] = [
+  {
+    q: "What does the $2,497 fee include?",
+    a: "The one-time fee covers your funding strategy call, personal and business credit analysis, business foundation review, lender-ready document package, and strategic application sequencing. It's charged when you sign. Refund terms are pending attorney approval.",
+  },
+  {
+    q: "Are there additional fees?",
+    a: "Yes. If you're funded, a success fee applies: 8% on the first $20,000 and 10% on amounts above that, due within 5 business days after funds are approved and available. No funding, no success fee. Credit Hero Score monitoring is required separately at $29.95/month, paid directly to Credit Hero Score, not to CREDA BUDDi.",
   },
 ];
 
