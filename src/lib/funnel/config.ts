@@ -62,7 +62,7 @@ export const SENDER = {
 export const REGULAR_PRICE = 2497;
 export const SALE_PRICE = 1997;
 // Empty start = running now. Set to the actual launch date, e.g. "2026-11-24T00:00:00-06:00".
-export const SALE_START = "";
+export const SALE_START = "2026-11-22T00:00:00-06:00";
 // Monday, November 30, 2026, 11:59 PM Central (CST, UTC-6).
 export const SALE_END = "2026-11-30T23:59:59-06:00";
 // November 27 special promotion. Wording not provided, so nothing is shown until it is set.

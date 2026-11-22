@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition, type FormEvent, type ReactNode } from "react";
+import { useEffect, useState, useTransition, type FormEvent, type ReactNode } from "react";
 import { CONSENT_TEXT, QUESTIONS } from "@/lib/funnel/config";
 import { saveStep1, saveStep2 } from "./actions";
 import { useFunnel } from "./funnel-context";
@@ -38,6 +38,10 @@ function Field({
 export default function QualificationForm() {
   const { setResult } = useFunnel();
   const [pending, startTransition] = useTransition();
+  // Buttons stay disabled until the page is interactive, so an early click can
+  // never fall back to a plain browser submit that puts personal details in the URL.
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
   const [step, setStep] = useState<1 | 2>(1);
   const [contactId, setContactId] = useState("");
   const [saved, setSaved] = useState(true);
@@ -123,6 +127,7 @@ export default function QualificationForm() {
   return (
     <form
       onSubmit={onSubmit}
+      method="post"
       noValidate
       aria-label="Funding Readiness Form"
       className="rounded-[20px] border border-white/15 p-6 sm:p-8"
@@ -219,7 +224,7 @@ export default function QualificationForm() {
         ) : null}
         <button
           type="submit"
-          disabled={pending}
+          disabled={pending || !hydrated}
           className="w-full rounded-full bg-cyan px-7 py-4 text-center text-sm font-medium text-black transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
         >
           {pending ? "Saving…" : formError ? "Try again" : "Continue"}

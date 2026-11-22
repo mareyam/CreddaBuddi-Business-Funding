@@ -30,7 +30,7 @@ export default function FundingReadyOffer() {
       </div>
       {sale ? (
         <p className="mt-3 text-sm text-white/75">
-          Black Friday price. Ends November 30, 2026 at 11:59 PM Central. After that the price is{" "}
+          Black Friday price. Starts November 22, 2026. Ends November 30, 2026 at 11:59 PM Central. After that the price is{" "}
           {money(REGULAR_PRICE)}.
         </p>
       ) : null}

@@ -102,7 +102,7 @@ export default function BlackFridayPopup() {
         ))}
 
         <p className="font-[family-name:var(--font-geist-mono)] text-xs tracking-[0.2em] text-[#e8c26a] uppercase">
-          Black Friday Funding Offer
+          Black Friday Special. Limited time only.
         </p>
         <p className="mt-3 flex flex-wrap items-baseline gap-x-4 text-[clamp(3.4rem,14vw,5.4rem)] leading-none font-medium tracking-[-0.06em]">
           <s className="text-[0.38em] tracking-tight text-white/55">{money(REGULAR_PRICE)}</s>
@@ -118,6 +118,9 @@ export default function BlackFridayPopup() {
             {countdown}
           </p>
         ) : null}
+        <p className="mt-3 text-sm text-white/80">
+          Starts November 22, 2026. Ends Monday, November 30, 2026 at 11:59 PM Central.
+        </p>
         <p className="mt-3 text-[15px] leading-normal text-white/90">
           Book your Funding Strategy Call by November 30 and enroll within 3 days of your call to lock in this price.
         </p>
