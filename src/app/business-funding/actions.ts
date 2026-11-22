@@ -2,6 +2,7 @@
 
 import { CONSENT_TEXT, QUESTIONS, STAGES, TAGS, WORKFLOWS, type Route } from "@/lib/funnel/config";
 import { callHook } from "@/lib/funnel/crm";
+import { ghlConfigured, markConsentField, recordConsent, saveAnswers, upsertContact } from "@/lib/funnel/ghl";
 import { qualify } from "@/lib/funnel/qualification";
 
 /*
@@ -48,9 +49,18 @@ export async function saveStep1(input: Step1Input): Promise<Step1Result> {
   }
 
   try {
+    // Direct GrowthHub365 API (when GHL_API_TOKEN + GHL_LOCATION_ID are set): create or find the contact first.
+    let ghlId = "";
+    if (ghlConfigured()) {
+      const contact = await upsertContact({ fullName, email, phone, businessName, tags: [TAGS.source] });
+      await recordConsent(contact.id, new Date().toISOString());
+      await markConsentField(contact.id);
+      ghlId = contact.id;
+    }
+
     const res = await callHook("contact", {
       type: "contact",
-      contactId: input.contactId || undefined,
+      contactId: ghlId || input.contactId || undefined,
       fullName,
       email,
       phone,
@@ -61,8 +71,8 @@ export async function saveStep1(input: Step1Input): Promise<Step1Result> {
       stage: "New Readiness Form",
     });
 
-    let contactId = input.contactId ?? "";
-    if (res.configured) {
+    let contactId = ghlId || input.contactId || "";
+    if (res.configured && !ghlId) {
       const id = res.data.contactId;
       if (typeof id !== "string" || !id) {
         return { ok: false, error: "We couldn't save your details. Please try again." };
@@ -78,8 +88,17 @@ export async function saveStep1(input: Step1Input): Promise<Step1Result> {
     } else if (!contactId) {
       contactId = `preview-${crypto.randomUUID()}`;
     }
-    return { ok: true, contactId, saved: res.configured };
-  } catch {
+    return { ok: true, contactId, saved: res.configured || !!ghlId };
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.error("[funding-form] Step 1 save failed:", message);
+    if (/phone/i.test(message)) {
+      return {
+        ok: false,
+        error: "That phone number was not accepted. Check it and try again.",
+        fieldErrors: { phone: "Enter a valid phone number with area code." },
+      };
+    }
     return { ok: false, error: "We couldn't save your details. Check your connection and try again." };
   }
 }
@@ -109,6 +128,10 @@ export async function saveStep2(
   const tags = [TAGS[q.route], TAGS.source, ...q.tags];
 
   try {
+    // Direct GrowthHub365 API: update the contact created in Step 1 with the 11 answers.
+    if (ghlConfigured()) {
+      await saveAnswers(contactId, answers, tags, q.route);
+    }
     const calls = await Promise.all([
       callHook("answers", { type: "answers", contactId, answers }),
       callHook("qualification", {
@@ -124,8 +147,9 @@ export async function saveStep2(
       callHook("followUp", { type: "followUp", workflow: WORKFLOWS.notFinished, action: "stop", contactId }),
       callHook("followUp", { type: "followUp", workflow: WORKFLOWS[q.route], action: "start", contactId, route: q.route, tags }),
     ]);
-    return { ok: true, route: q.route, tags: q.tags, saved: calls.some((c) => c.configured) };
-  } catch {
+    return { ok: true, route: q.route, tags: q.tags, saved: ghlConfigured() || calls.some((c) => c.configured) };
+  } catch (err) {
+    console.error("[funding-form] Step 2 save failed:", err instanceof Error ? err.message : String(err));
     return { ok: false, error: "We couldn't save your answers. Please try again." };
   }
 }

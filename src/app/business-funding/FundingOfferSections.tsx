@@ -11,7 +11,7 @@ import { Pill, frame, h2, inner, label } from "./shared";
  *  - The success-fee wording below is the previous page copy and is pending
  *    attorney approval. Refund wording has been removed and is pending
  *    attorney approval; do not add a replacement until it is approved.
- *  - The Black Friday bonus: Corey says the consultation and written roadmap
+ *  - The Black Friday bonus: the client says the consultation and written roadmap
  *    are already included in the program, so they should not be presented as
  *    a free extra unless a genuinely new bonus is defined.
  */
