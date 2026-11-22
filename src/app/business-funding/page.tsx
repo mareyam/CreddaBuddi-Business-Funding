@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import AuraHero from "./AuraHero";
-import QualificationForm from "./QualificationForm";
 import FAQAccordion from "./FAQAccordion";
 import FunnelShell from "./FunnelShell";
 import ViewLink from "./ViewLink";
-import { Pill, formAnchorId, frame, h2, inner, label } from "./shared";
+import { FORM_PATH } from "@/lib/funnel/config";
+import { Pill, frame, h2, inner, label } from "./shared";
 
 export const metadata: Metadata = {
   title: "Business Funding Growth Accelerator | CREDA BUDDi",
@@ -245,7 +245,7 @@ export default function BusinessFundingLandingPage() {
               <StrokeFan />
             </div>
             <div>
-              <Pill href={`#${formAnchorId}`} tone="cyan">
+              <Pill href={FORM_PATH} tone="cyan">
                 Check My Funding Readiness
               </Pill>
             </div>
@@ -316,24 +316,6 @@ export default function BusinessFundingLandingPage() {
           </div>
         </section>
 
-        {/* ---------- Qualification Form ---------- */}
-        <section id={formAnchorId} className={`${frame} bg-black text-white`}>
-          <div className="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
-            <p className={`${label} text-cyan`}>Get started</p>
-            <h2 className={`${h2} mt-5`}>Check your business funding readiness.</h2>
-            <p className="mt-5 max-w-xl text-lg leading-snug tracking-tight text-white/60">
-              Tell us a bit about your business. A member of the CREDA BUDDi
-              team will follow up to discuss your funding strategy.
-            </p>
-            <p className="mt-3 max-w-xl text-sm text-white/50">
-              Program and success-fee pricing is explained before you enroll.
-            </p>
-            <div className="mt-10">
-              <QualificationForm />
-            </div>
-          </div>
-        </section>
-
         {/* ---------- FAQ ---------- */}
         <section className={`${frame} bg-black text-white`}>
           <div className="mx-auto max-w-4xl px-5 py-16 sm:px-8 sm:py-24">
@@ -355,8 +337,11 @@ export default function BusinessFundingLandingPage() {
               Understand where your business stands and take a more strategic
               approach to pursuing funding.
             </p>
+            <p className="mt-3 max-w-xl text-sm text-black/65">
+              Program and success-fee pricing is explained before you enroll.
+            </p>
             <div className="mt-9">
-              <Pill href={`#${formAnchorId}`} tone="black">
+              <Pill href={FORM_PATH} tone="black">
                 Check My Funding Readiness
               </Pill>
             </div>

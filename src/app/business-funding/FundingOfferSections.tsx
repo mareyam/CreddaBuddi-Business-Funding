@@ -1,5 +1,6 @@
 import SuccessFeeCalculator from "./SuccessFeeCalculator";
-import { Pill, formAnchorId, frame, h2, inner, label } from "./shared";
+import { FORM_PATH } from "@/lib/funnel/config";
+import { Pill, frame, h2, inner, label } from "./shared";
 
 /*
  * Reusable offer sections, moved off the main landing page.
@@ -29,7 +30,7 @@ export const deliverables = [
   "Guidance through your funding rounds",
 ];
 
-export function PricingSection({ ctaHref = `#${formAnchorId}` }: { ctaHref?: string }) {
+export function PricingSection({ ctaHref = FORM_PATH }: { ctaHref?: string }) {
   return (
     <section className={`${frame} bg-black text-white`}>
       <div className={inner}>

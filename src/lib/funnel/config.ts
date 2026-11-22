@@ -3,6 +3,9 @@
  * or in environment variables. Nothing here is a CRM credential.
  */
 
+/** The separate page that holds the Funding Readiness Form. Every CTA opens it. */
+export const FORM_PATH = "/funding-readiness";
+
 export type Route = "ready" | "credit-first" | "foundation-first";
 
 export const CONSENT_TEXT =
@@ -15,7 +18,7 @@ export type Question =
 
 export const QUESTIONS: readonly Question[] = [
   { id: "hasEin", label: "Is your business registered with an EIN?", options: ["Yes", "No", "In progress"] },
-  { id: "businessType", label: "Business type", options: ["Sole proprietorship", "LLC", "S-Corp", "C-Corp", "Partnership", "Not yet registered"] },
+  { id: "businessType", label: "Business type", options: ["Sole Proprietorship", "LLC", "S-Corp", "C-Corp", "Partnership", "Not yet registered"] },
   { id: "timeInBusiness", label: "How long has the business been operating?", options: ["Under 6 months", "6 to 12 months", "1 to 2 years", "2 to 5 years", "5+ years"] },
   { id: "annualRevenue", label: "Estimated annual revenue", options: ["Pre-revenue", "Under $50,000", "$50,000 to $150,000", "$150,000 to $500,000", "$500,000+"] },
   { id: "hasBank", label: "Do you have a business bank account?", options: ["Yes", "No"] },

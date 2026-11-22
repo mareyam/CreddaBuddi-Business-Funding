@@ -3,11 +3,12 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import type p5 from "p5";
+import { FORM_PATH } from "@/lib/funnel/config";
 
 const LOGO_SRC =
   "https://assets.cdn.filesafe.space/WngHsAfzZPxeecb7veIn/media/6ad8322cf9a985d42c4e4d7b.webp";
-const PERSONAL_HREF = "#qualification-form";
-const BUSINESS_HREF = "#qualification-form";
+const PERSONAL_HREF = FORM_PATH;
+const BUSINESS_HREF = FORM_PATH;
 
 const TAU = Math.PI * 2;
 const HUES: Record<string, number[]> = {

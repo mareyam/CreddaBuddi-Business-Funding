@@ -222,7 +222,7 @@ export default function QualificationForm() {
           disabled={pending}
           className="w-full rounded-full bg-cyan px-7 py-4 text-center text-sm font-medium text-black transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
         >
-          {pending ? "Saving…" : formError ? "Try again" : step === 1 ? "Continue" : "See my result"}
+          {pending ? "Saving…" : formError ? "Try again" : "Continue"}
         </button>
       </div>
 
