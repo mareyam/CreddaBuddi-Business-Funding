@@ -12,6 +12,16 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // The page moved from /black-friday/business-funding to /business-funding.
+  async redirects() {
+    return [
+      {
+        source: "/black-friday/business-funding",
+        destination: "/business-funding",
+        permanent: false,
+      },
+    ];
+  },
   turbopack: {
     rules: {
       "*.css": {
