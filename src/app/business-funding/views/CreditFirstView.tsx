@@ -96,6 +96,13 @@ export default function CreditFirstView() {
 
         <section className={`${frame} bg-black`}>
           <div className={`${inner} py-10 sm:py-12`}>
+            <p className="mb-6 max-w-2xl text-[15px] leading-relaxed text-white/80">
+              Want to check again? Retake the{" "}
+              <a href="/funding-readiness" className="underline underline-offset-4">
+                Funding Readiness Check
+              </a>{" "}
+              in 60 days, or in 90 days if you are using the guide.
+            </p>
             <QuestionsLine />
           </div>
         </section>

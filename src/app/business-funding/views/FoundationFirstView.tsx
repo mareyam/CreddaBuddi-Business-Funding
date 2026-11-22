@@ -70,7 +70,10 @@ export default function FoundationFirstView() {
                 <FollowUpButton kind="foundation-notify">Notify Me</FollowUpButton>
               </div>
             </div>
-            <div className="mt-10">
+            <p className="mt-10 max-w-2xl text-[15px] leading-relaxed text-white/80">
+              We will also email you this checklist, so you can work through it at your own pace.
+            </p>
+            <div className="mt-6">
               <QuestionsLine />
             </div>
           </div>
