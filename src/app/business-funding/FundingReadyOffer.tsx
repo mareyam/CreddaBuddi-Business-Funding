@@ -2,6 +2,7 @@
 
 import { REGULAR_PRICE, SALE_PRICE, saleActive } from "@/lib/funnel/config";
 import { useNow } from "@/lib/funnel/session";
+import CountdownTimer from "./CountdownTimer";
 import { deliverables } from "./FundingOfferSections";
 import { label } from "./shared";
 
@@ -34,6 +35,9 @@ export default function FundingReadyOffer() {
           {money(REGULAR_PRICE)}.
         </p>
       ) : null}
+      <div className="mt-3">
+        <CountdownTimer />
+      </div>
 
       <ul className="mt-6 grid gap-2.5 text-[15px] leading-relaxed text-white/80">
         <li className="border-t border-white/15 pt-2.5">

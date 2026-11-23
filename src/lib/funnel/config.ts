@@ -9,7 +9,7 @@ export const FORM_PATH = "/funding-readiness";
 export type Route = "ready" | "credit-first" | "foundation-first";
 
 export const CONSENT_TEXT =
-  "I agree that CREDA BUDDI LLC may contact me at the phone number and email I provided about my funding readiness, including by calls and text messages that may use automated technology. Message and data rates may apply. Consent is not a condition of purchase. Reply STOP to opt out.";
+  "I agree that CREDA BUDDI LLC may contact me at the phone number and email I provided about my business funding readiness, including by calls and text messages that may use automated technology. Message and data rates may apply. Consent is not a condition of purchase. Reply STOP to opt out.";
 
 /* ---- Step 2 questions: exact wording and answer choices from the client ---- */
 export type Question =
